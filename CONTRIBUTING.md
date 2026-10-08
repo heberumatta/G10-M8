@@ -1,6 +1,6 @@
 # Guía de Inicio y Trabajo en Equipo - Grupo 10 (Módulo 8)
 
-¡Hola equipo! Soy Heber. Les armé esta guía para que los **9 integrantes** podamos trabajar de forma súper organizada, sin pisarnos ramas ni código, y con una arquitectura profesional y limpia para la materia.
+Les armé esta guía para que los **9 integrantes** podamos trabajar de forma súper organizada, sin pisarnos ramas ni código, y con una arquitectura profesional y limpia para la materia.
 
 Todo el proyecto ya está estructurado como un **Monorepo** con NestJS, Arquitectura Hexagonal, TypeScript y **Supabase Cloud** para la base de datos (así nadie tiene que renegar instalando o levantando PostgreSQL en su máquina).
 
@@ -125,10 +125,5 @@ El backend está separado en capas (`domain`, `application`, `infrastructure`).
 
 ---
 
-## 🆘 ¿Te trabaste o tienes un error?
-
-**No te quedes trabado.** Si te sale un conflicto con Git, un error de TypeScript o algo no te compila:
-1. Escribe en **Microsoft Teams** en el canal **`#03-bloqueos-y-ayuda-git`**.
-2. O mencióname directamente para que nos conectemos 5 minutos y lo destrabemos al toque.
-
-¡A meterle con todo! 🚀
+##  ¿Te trabaste o tienes un error?
+  Avisame si te falla algo crack
