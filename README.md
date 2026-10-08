@@ -1,6 +1,20 @@
 # Desarrollo de Software - 2026
 
-## Consideraciones
+## 🚗 Grupo 10: Módulo 8 (Notificaciones, Documentos y Soporte)
+
+> **Plataforma Distribuida de Movilidad Urbana**  
+> Repositorio oficial del **Grupo 10 (9 integrantes)** encargado de la implementación de **M8** utilizando NestJS, Arquitectura Hexagonal, TypeScript y **Supabase Cloud**.
+
+### 📚 Documentación Rápida para el Equipo y Docentes
+- 🚀 **[Guía de Puesta en Marcha y Flujo de Git](file:///home/heberum/Projects/G10-M8/G10-M8/CONTRIBUTING.md)**: Cómo clonar, conectar a Supabase y trabajar con PRs.
+- 🏛️ **[Arquitectura de Software (Hexagonal)](file:///home/heberum/Projects/G10-M8/G10-M8/ARCHITECTURE.md)**: Justificación técnica, desacoplamiento y modelo en capas.
+- 👥 **[Organización de Roles y Células](file:///home/heberum/Projects/G10-M8/G10-M8/ROLES.md)**: Distribución del trabajo para los 9 integrantes (1 Tech Lead + 4 Células de 2 personas).
+- 📌 **[Guía de Gestión en Teams y Trello](file:///home/heberum/Projects/G10-M8/G10-M8/TEAM_COLLABORATION_GUIDE.md)**: Canales de comunicación, tableros Kanban y dinámicas ágiles.
+- 📋 **[Especificación OpenAPI 3.0](file:///home/heberum/Projects/G10-M8/G10-M8/packages/contracts/openapi.yaml)**: Contrato oficial de interfaces de M8.
+
+---
+
+## Consideraciones Generales
 
 En este repositorio se deberán definir todas las interfaces entre los diferentes módulos que contiene el enunciado. Para ello se deberá utilizar [OpenAPI Specification](https://swagger.io/specification/).
 
