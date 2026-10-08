@@ -6,10 +6,10 @@
 > Repositorio del Grupo 10 (9 integrantes) para la implementación de **M8** utilizando NestJS, Arquitectura Hexagonal, TypeScript y PostgreSQL.
 
 ### Documentación del Proyecto
-- [Guía de Puesta en Marcha y Flujo de Git](CONTRIBUTING.md): Cómo clonar, configurar variables de entorno y trabajar con ramas.
-- [Arquitectura de Software (Hexagonal)](ARCHITECTURE.md): Justificación técnica, desacoplamiento y modelo en capas.
+- [Guía de Puesta en Marcha y Flujo de Git](CONTRIBUIDORES.md): Cómo clonar, configurar variables de entorno y trabajar con ramas.
+- [Arquitectura de Software (Hexagonal)](ARQUITECTURA.md): Justificación técnica, desacoplamiento y modelo en capas.
 - [Organización de Roles y Células](ROLES.md): Distribución de responsabilidades para los 9 integrantes (1 Tech Lead + 4 células de 2 personas).
-- [Guía de Gestión en Teams y Trello](TEAM_COLLABORATION_GUIDE.md): Canales de comunicación y tablero Kanban del equipo.
+- [Guía de Gestión en Teams y Trello](GUIA_COLABORADORES.md): Canales de comunicación y tablero Kanban del equipo.
 - [Especificación OpenAPI 3.0](packages/contracts/openapi.yaml): Contrato formal de interfaces de M8.
 
 ---
