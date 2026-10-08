@@ -1,137 +1,134 @@
-# Guía de Contribución y Onboarding - Grupo 10 (Módulo 8)
+# Guía de Inicio y Trabajo en Equipo - Grupo 10 (Módulo 8)
 
-¡Bienvenidos al equipo! Esta guía está preparada para que los **9 integrantes** puedan configurar su entorno de desarrollo rápidamente, conectarse a la base de datos cloud en **Supabase** y colaborar de manera fluida con Git y GitHub.
+¡Hola equipo! Soy Heber. Les armé esta guía para que los **9 integrantes** podamos trabajar de forma súper organizada, sin pisarnos ramas ni código, y con una arquitectura profesional y limpia para la materia.
 
----
-
-## 1. Requisitos Previos
-
-- **Node.js**: Versión 20 LTS o superior ([Descargar Node.js](https://nodejs.org/)).
-- **Git**: Configurado en tu equipo con tu nombre y correo de GitHub.
-- **Cuenta de GitHub**: Con acceso de colaborador al repositorio `heberumatta/G10-M8`.
-
-> [!NOTE]
-> **¿Hace falta tener Docker instalado?**  
-> **No es obligatorio para la base de datos.** Usamos **Supabase Cloud**, por lo que todos nos conectamos a la misma base de datos en la nube sin necesidad de levantar contenedores locales de PostgreSQL. Docker solo es opcional si deseas levantar localmente RabbitMQ, Redis o Mailpit.
+Todo el proyecto ya está estructurado como un **Monorepo** con NestJS, Arquitectura Hexagonal, TypeScript y **Supabase Cloud** para la base de datos (así nadie tiene que renegar instalando o levantando PostgreSQL en su máquina).
 
 ---
 
-## 2. Puesta en Marcha Inicial (Paso a Paso)
+## 📌 1. Lo que necesitas tener instalado antes de arrancar
+
+1. **Node.js**: Versión 20 LTS o superior ([Descárgalo gratis acá](https://nodejs.org/)).
+2. **Git**: Con tu usuario y mail configurados en tu terminal.
+3. **Tu cuenta de GitHub**: Pásame tu usuario para agregarte como colaborador al repositorio `https://github.com/heberumatta/G10-M8`.
+
+> 💡 **Nota sobre Docker**:  
+> **NO es obligatorio tener Docker.** Como usamos **Supabase Cloud**, todos nos conectamos a la misma base de datos en la nube directamente desde Node.js. Docker solo es opcional si alguien quiere levantar servicios adicionales como Mailpit o RabbitMQ en local.
+
+---
+
+## 🚀 2. Paso a Paso: Cómo poner el proyecto en marcha en tu máquina
 
 ### Paso 1: Clonar el repositorio
+Abre tu terminal en la carpeta donde guardas tus proyectos y clona el repo:
 ```bash
 git clone https://github.com/heberumatta/G10-M8.git
 cd G10-M8
 ```
 
-### Paso 2: Cambiar a la rama de integración `develop`
+### Paso 2: Cambiarte a la rama de trabajo `develop`
+**Muy importante:** todo nuestro desarrollo se integra en `develop`:
 ```bash
 git checkout develop
 git pull origin develop
 ```
 
-### Paso 3: Instalar dependencias del Monorepo
-El proyecto utiliza `npm workspaces`. **Solo necesitas ejecutar `npm install` una vez en la carpeta raíz**:
+### Paso 3: Instalar dependencias del proyecto
+El proyecto usa `npm workspaces`. **Solo hace falta ejecutar `npm install` una sola vez en la raíz** y te instala las dependencias de todo el monorepo (backend, frontend y contratos):
 ```bash
 npm install
 ```
 
-### Paso 4: Configurar Variables de Entorno con Supabase
-Copia el archivo de ejemplo para crear tu `.env`:
-```bash
-cp .env.example .env
-```
-Abre tu archivo `.env` y pega la cadena de conexión de **Supabase** compartida por el Tech Lead en el grupo:
-```env
-# Conexión a la base de datos cloud de Supabase
-DATABASE_URL="postgresql://postgres.[TU_PROJECT_REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres?pgbouncer=true"
+### Paso 4: Crear tu archivo `.env` (Credenciales que les paso por Teams)
+Por seguridad de la nube, las claves y contraseñas de la base de datos **no se suben a GitHub**. 
 
-# Parámetros del servidor NestJS
-PORT=3000
-API_PREFIX=api/v1
-CORS_ORIGIN=http://localhost:5173
-```
+1. Crea tu archivo `.env` en la raíz copiando la plantilla:
+   ```bash
+   cp .env.example .env
+   ```
+2. **Abre el archivo `.env` y pega las variables que yo les voy a compartir por Microsoft Teams** (en el canal `#02-infra-supabase-github`). Ahí tendrán la cadena de conexión de Supabase y las configuraciones listas. No toquen nada más.
 
-### Paso 5: Sincronizar Prisma con Supabase
-Genera el cliente de Prisma y sincroniza el esquema con Supabase ejecutando:
+### Paso 5: Generar el cliente de base de datos (Prisma)
+Una vez que tengas el `.env` con los datos de Supabase, ejecuta este comando para que TypeScript reconozca las tablas y modelos de la base de datos:
 ```bash
 npx prisma generate --schema=apps/backend/prisma/schema.prisma
 ```
-*(Opcional) Para abrir el visor visual de tablas de Prisma en tu navegador:*
-```bash
-npm run prisma:studio
-```
+*(Opcional: Si quieres ver las tablas de Supabase en una interfaz web local, puedes correr `npm run prisma:studio` y abrir `http://localhost:5555`).*
 
 ---
 
-## 3. Ejecución de los Servicios en Desarrollo
+## 💻 3. Cómo levantar el proyecto en tu máquina
 
-### Para iniciar la API Backend (NestJS):
-```bash
-npm run dev:backend
-```
-- API REST: `http://localhost:3000/api/v1`
-- **Swagger UI interactivo con todos los endpoints**: [http://localhost:3000/api/docs](http://localhost:3000/api/docs)
+- **Para iniciar el Backend (API NestJS):**
+  ```bash
+  npm run dev:backend
+  ```
+  - La API correrá en: `http://localhost:3000/api/v1`
+  - **Swagger UI interactivo**: Entra a [http://localhost:3000/api/docs](http://localhost:3000/api/docs) para ver y probar todos los endpoints disponibles con documentación oficial.
 
-### Para iniciar el Dashboard Frontend (React / Vite):
-```bash
-npm run dev:frontend
-```
-- Panel web: `http://localhost:5173`
+- **Para iniciar el Frontend Dashboard (React / Vite):**
+  ```bash
+  npm run dev:frontend
+  ```
+  - Abre en tu navegador: `http://localhost:5173`
 
 ---
 
-## 4. Flujo Obligatorio de Git y GitHub
+## ⚠️ 4. Indicaciones MUY IMPORTANTES para trabajar (Reglas del Equipo)
 
-Para que los 9 integrantes trabajemos sin colisiones ni ramas desactualizadas, seguimos este flujo estricto:
+Para que seamos un equipo eficiente y no tengamos conflictos de Git ni errores antes de las entregas:
 
-### 1. Salir siempre desde `develop`
-Antes de iniciar cualquier tarea:
+### 1. 🚫 Prohibido hacer push directo a `main` o a `develop`
+Ambas ramas están protegidas por reglas de GitHub. Nadie puede subir código directamente a ellas. **Todo cambio entra mediante Pull Request (PR)**.
+
+### 2. 👥 Trabajamos en Células de 2 personas (Pair Programming)
+Revisen el archivo [ROLES.md](file:///home/heberum/Projects/G10-M8/G10-M8/ROLES.md). Estamos divididos en parejas por subdominio:
+- **Célula 1**: Notificaciones y Emails (RF-8.1, RF-8.2, RF-8.6, RF-8.8).
+- **Célula 2**: Documentos, QR y PDFs (RF-8.3, RF-8.4, RF-8.5).
+- **Célula 3**: Soporte y Tickets (RF-8.7).
+- **Célula 4**: Frontend Backoffice (React / Vite).
+- **Tech Lead (Heber)**: Infraestructura, Supabase, CI/CD, contratos y merges.
+
+### 3. 🌿 Flujo de Ramas: Siempre salimos desde `develop`
+Antes de programar cualquier tarea:
 ```bash
 git checkout develop
 git pull origin develop
+git checkout -b feat/m8-<tu-celula>-<descripcion-corta>
 ```
-
-### 2. Crear una rama de funcionalidad
-Crea tu rama siguiendo la convención acordada:
-```bash
-git checkout -b feat/m8-<modulo>-<descripcion-corta>
-```
-*Ejemplos:*
-- `feat/m8-tickets-persistence`
+*Ejemplos de nombres de ramas:*
 - `feat/m8-qr-generation`
-- `feat/m8-pdf-receipt-download`
-- `feat/m8-frontend-ticket-filter`
-- `fix/m8-notification-retry-bug`
+- `feat/m8-tickets-persistence`
+- `feat/m8-email-sender`
+- `fix/m8-ticket-status-bug`
 
-### 3. Commits Convencionales (Conventional Commits)
-Escribe mensajes de commit descriptivos:
-- `feat(support): add endpoint to close ticket with resolution note`
-- `fix(qr): prevent token reuse after first verification`
-- `test(notifications): add unit test for retry policy`
-- `docs(openapi): update receipt schemas`
+### 4. 📝 Commits claros (Conventional Commits)
+Escriban commits claros en presente:
+- `feat(support): add endpoint to create support tickets`
+- `fix(qr): fix expiration check on single use token`
+- `test(notifications): add unit tests for notification service`
 
-### 4. Abrir un Pull Request (PR) hacia `develop`
-1. Sube tu rama a GitHub:
+### 5. 🔍 Pull Requests y Revisión Mutua
+1. Cuando terminen su tarea, suban la rama:
    ```bash
-   git push origin feat/m8-<tu-rama>
+   git push origin feat/m8-...
    ```
-2. En GitHub, abre un Pull Request teniendo como base **`develop`** (NUNCA `main`).
-3. Completa la plantilla del PR:
-   - Indica el requerimiento funcional (ej. RF-8.3, RF-8.7).
-   - Asigna como **Revisor (Reviewer)** a tu compañero de célula.
-4. Tu compañero de célula revisa el código y aprueba el PR.
-5. Una vez que el pipeline de GitHub Actions (CI) esté en verde y tengas la aprobación, realiza **Squash and Merge**.
+2. Abran el Pull Request en GitHub apuntando hacia la rama **`develop`** (NUNCA hacia `main`).
+3. Completen la plantilla del PR y **asignen a su compañero de célula como Reviewer**.
+4. Su compañero de célula revisa el código en GitHub y deja su aprobación.
+5. Una vez aprobado y con las pruebas de GitHub Actions en verde, se hace **Squash and Merge**.
+
+### 6. 🏛️ Respetar la Arquitectura Hexagonal
+El backend está separado en capas (`domain`, `application`, `infrastructure`).
+- **El Dominio es sagrado**: No importen librerías de base de datos ni cosas de NestJS dentro de `domain/`.
+- Ante cualquier duda de cómo estructurar un archivo, revisen [.agents/rules/hexagonal-architecture.md](file:///home/heberum/Projects/G10-M8/G10-M8/.agents/rules/hexagonal-architecture.md).
 
 ---
 
-## 5. Herramientas y Consolas Clave
+## 🆘 ¿Te trabaste o tienes un error?
 
-- **Documentación Swagger OpenAPI**: [http://localhost:3000/api/docs](http://localhost:3000/api/docs)
-- **Supabase Dashboard**: Panel web para ver y administrar las tablas de PostgreSQL y buckets de archivos en la nube.
-- **Frontend Dashboard de M8**: [http://localhost:5173](http://localhost:5173)
-- **Verificación rápida antes de abrir un PR**:
-  ```bash
-  npm run build
-  npm run test --workspaces --if-present
-  ```
+**No te quedes trabado.** Si te sale un conflicto con Git, un error de TypeScript o algo no te compila:
+1. Escribe en **Microsoft Teams** en el canal **`#03-bloqueos-y-ayuda-git`**.
+2. O mencióname directamente para que nos conectemos 5 minutos y lo destrabemos al toque.
+
+¡A meterle con todo! 🚀
