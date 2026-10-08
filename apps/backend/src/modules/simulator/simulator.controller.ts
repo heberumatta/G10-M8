@@ -33,7 +33,6 @@ export class SimulatorController {
 
     this.logger.log(`[SIMULADOR] Evento recibido: trip.completed para viaje ${tripId}`);
 
-    // Disparar notificación automática
     await this.notificationsService.send({
       channel: NotificationChannelDto.EMAIL,
       recipient: email,

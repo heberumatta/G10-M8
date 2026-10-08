@@ -1,6 +1,6 @@
 # Guía de Organización del Equipo con Microsoft Teams y Trello (Grupo 10 - M8)
 
-Esta guía complementa a [CONTRIBUTING.md](file:///home/heberum/Projects/G10-M8/G10-M8/CONTRIBUTING.md) y [ROLES.md](file:///home/heberum/Projects/G10-M8/G10-M8/ROLES.md). Su propósito es establecer una dinámica de comunicación y gestión ágil para los **9 integrantes**, evitando saturación de mensajes y asegurando que cada persona sepa qué hacer en cada etapa del proyecto.
+Esta guía complementa a [CONTRIBUTING.md](CONTRIBUTING.md) y [ROLES.md](ROLES.md). Su propósito es establecer una dinámica de comunicación y gestión ágil para los **9 integrantes**, evitando saturación de mensajes y asegurando que cada persona sepa qué hacer en cada etapa del proyecto.
 
 ---
 

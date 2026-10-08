@@ -19,20 +19,20 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
         password,
         lazyConnect: true,
         maxRetriesPerRequest: 1,
-        retryStrategy: () => null, // No bloquear si Redis está caído
+        retryStrategy: () => null,
       });
 
       this.client
         .connect()
         .then(() => {
-          this.logger.log(` Conectado a Redis en ${host}:${port}`);
+          this.logger.log(`Conectado a Redis en ${host}:${port}`);
         })
         .catch((err) => {
-          this.logger.warn(`⚠ Redis no disponible (${err.message}). Usando caché en memoria de respaldo.`);
+          this.logger.warn(`Redis no disponible (${err.message}). Usando caché en memoria local.`);
           this.client = null;
         });
     } catch (e) {
-      this.logger.warn(`⚠ Error inicializando Redis. Usando memoria local.`);
+      this.logger.warn(`Error inicializando Redis. Usando memoria local.`);
       this.client = null;
     }
   }

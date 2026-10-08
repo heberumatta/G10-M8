@@ -18,11 +18,8 @@ export class DocumentsService {
     private readonly notificationsService: NotificationsService,
   ) { }
 
-  // -----------------------------------------------------------------
-  // RF-8.3: QR de Verificación Temporal de Un Solo Uso
-  // -----------------------------------------------------------------
   async generateQr(dto: GenerateQrDto) {
-    const ttl = dto.ttlSeconds || 300; // 5 minutos por defecto
+    const ttl = dto.ttlSeconds || 300;
     const randomHex = crypto.randomBytes(16).toString('hex');
     const token = `qr_${dto.tripId}_${randomHex}`;
     const expiresAt = new Date(Date.now() + ttl * 1000);
@@ -34,10 +31,8 @@ export class DocumentsService {
       expiresAt: expiresAt.toISOString(),
     });
 
-    // Guardar en Redis con TTL estricto
     await this.redis.set(`qr:${token}`, payload, ttl);
 
-    // Generar imagen QR en Base64 (Data URL)
     const qrDataUrl = await QRCode.toDataURL(token, {
       errorCorrectionLevel: 'H',
       margin: 2,
@@ -67,7 +62,6 @@ export class DocumentsService {
       throw new BadRequestException('El código QR no corresponde a este viaje.');
     }
 
-    // Regla de un solo uso: Quemar / borrar token inmediatamente
     await this.redis.del(`qr:${dto.token}`);
 
     this.logger.log(`QR verificado y consumido para viaje ${dto.tripId}`);
@@ -80,9 +74,6 @@ export class DocumentsService {
     };
   }
 
-  // -----------------------------------------------------------------
-  // RF-8.4 & RF-8.5: Comprobantes PDF
-  // -----------------------------------------------------------------
   async generateReceiptPdfBuffer(data: {
     tripId: string;
     passengerEmail: string;
@@ -98,31 +89,26 @@ export class DocumentsService {
       doc.on('end', () => resolve(Buffer.concat(buffers)));
       doc.on('error', (err) => reject(err));
 
-      // Encabezado
       doc.fontSize(20).text('COMPROBANTE DE VIAJE', { align: 'center' });
-      doc.fontSize(10).text('Plataforma Distribuida de Movilidad Urbana - Módulo 8', { align: 'center' });
+      doc.fontSize(10).text('Plataforma de Movilidad Urbana - Módulo 8', { align: 'center' });
       doc.moveDown(2);
 
-      // Datos del Viaje
       doc.fontSize(12).text(`ID de Viaje: ${data.tripId}`);
-      doc.text(`Fecha y Hora: ${new Date().toLocaleString()}`);
+      doc.text(`Fecha: ${new Date().toLocaleString()}`);
       doc.text(`Pasajero: ${data.passengerEmail}`);
       if (data.driverName) doc.text(`Conductor: ${data.driverName}`);
       doc.moveDown();
 
-      // Desglose Financiero
       doc.font('Helvetica-Bold').fontSize(14).text(`Total Abonado: ${data.currency} $${data.amount.toFixed(2)}`);
       doc.moveDown(2);
 
-      doc.font('Helvetica').fontSize(9).fillColor('#555555').text('Este documento es un comprobante digital oficial de viaje.', { align: 'center' });
+      doc.font('Helvetica').fontSize(9).fillColor('#555555').text('Comprobante digital oficial de viaje.', { align: 'center' });
       doc.end();
     });
   }
 
   async resendReceipt(dto: ResendReceiptDto) {
-    this.logger.log(`Solicitud de reenvío de comprobante para viaje ${dto.tripId} a ${dto.email}`);
-
-    // Notificar al usuario vía email con aviso del comprobante
+    this.logger.log(`Reenvío de comprobante para viaje ${dto.tripId} a ${dto.email}`);
     await this.notificationsService.send({
       channel: NotificationChannelDto.EMAIL,
       recipient: dto.email,

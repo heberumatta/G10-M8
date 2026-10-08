@@ -81,15 +81,15 @@ Para que seamos un equipo eficiente y no tengamos conflictos de Git ni errores a
 ### 1. 🚫 Prohibido hacer push directo a `main` o a `develop`
 Ambas ramas están protegidas por reglas de GitHub. Nadie puede subir código directamente a ellas. **Todo cambio entra mediante Pull Request (PR)**.
 
-### 2. 👥 Trabajamos en Células de 2 personas (Pair Programming)
-Revisen el archivo [ROLES.md](file:///home/heberum/Projects/G10-M8/G10-M8/ROLES.md). Estamos divididos en parejas por subdominio:
+### 2. Trabajamos en Células de 2 personas (Pair Programming)
+Revisen el archivo [ROLES.md](ROLES.md). Estamos divididos en parejas por subdominio:
 - **Célula 1**: Notificaciones y Emails (RF-8.1, RF-8.2, RF-8.6, RF-8.8).
 - **Célula 2**: Documentos, QR y PDFs (RF-8.3, RF-8.4, RF-8.5).
 - **Célula 3**: Soporte y Tickets (RF-8.7).
 - **Célula 4**: Frontend Backoffice (React / Vite).
 - **Tech Lead (Heber)**: Infraestructura, Supabase, CI/CD, contratos y merges.
 
-### 3. 🌿 Flujo de Ramas: Siempre salimos desde `develop`
+### 3. Flujo de Ramas: Siempre salimos desde `develop`
 Antes de programar cualquier tarea:
 ```bash
 git checkout develop
@@ -102,13 +102,13 @@ git checkout -b feat/m8-<tu-celula>-<descripcion-corta>
 - `feat/m8-email-sender`
 - `fix/m8-ticket-status-bug`
 
-### 4. 📝 Commits claros (Conventional Commits)
+### 4. Commits claros (Conventional Commits)
 Escriban commits claros en presente:
 - `feat(support): add endpoint to create support tickets`
 - `fix(qr): fix expiration check on single use token`
 - `test(notifications): add unit tests for notification service`
 
-### 5. 🔍 Pull Requests y Revisión Mutua
+### 5. Pull Requests y Revisión Mutua
 1. Cuando terminen su tarea, suban la rama:
    ```bash
    git push origin feat/m8-...
@@ -118,10 +118,10 @@ Escriban commits claros en presente:
 4. Su compañero de célula revisa el código en GitHub y deja su aprobación.
 5. Una vez aprobado y con las pruebas de GitHub Actions en verde, se hace **Squash and Merge**.
 
-### 6. 🏛️ Respetar la Arquitectura Hexagonal
+### 6. Respetar la Arquitectura Hexagonal
 El backend está separado en capas (`domain`, `application`, `infrastructure`).
 - **El Dominio es sagrado**: No importen librerías de base de datos ni cosas de NestJS dentro de `domain/`.
-- Ante cualquier duda de cómo estructurar un archivo, revisen [.agents/rules/hexagonal-architecture.md](file:///home/heberum/Projects/G10-M8/G10-M8/.agents/rules/hexagonal-architecture.md).
+- Ante cualquier duda de cómo estructurar un archivo, revisen [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ---
 

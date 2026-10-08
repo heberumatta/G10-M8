@@ -17,7 +17,6 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<'overview' | 'tickets' | 'notifications' | 'qr' | 'simulator'>('overview');
   const [healthStatus, setHealthStatus] = useState<any>(null);
 
-  // Estados de Tickets
   const [tickets, setTickets] = useState<any[]>([
     {
       id: '1',
@@ -50,7 +49,6 @@ export default function App() {
     createdBy: 'operador@movilidad.com',
   });
 
-  // Estados de Notificaciones
   const [notifications, setNotifications] = useState<any[]>([
     {
       id: 'notif-1',
@@ -70,16 +68,13 @@ export default function App() {
     },
   ]);
 
-  // Estados de QR
   const [qrTripId, setQrTripId] = useState('trip-demo-4482');
   const [generatedQr, setGeneratedQr] = useState<any>(null);
   const [verifyToken, setVerifyToken] = useState('');
   const [verifyResult, setVerifyResult] = useState<any>(null);
 
-  // Estados del Simulador
   const [simulationLog, setSimulationLog] = useState<string[]>([]);
 
-  // Chequeo de conexión con la API
   useEffect(() => {
     fetch(`${API_BASE}/health`)
       .then((res) => res.json())
@@ -87,7 +82,6 @@ export default function App() {
       .catch(() => setHealthStatus({ status: 'offline' }));
   }, []);
 
-  // Crear Ticket
   const handleCreateTicket = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -104,7 +98,6 @@ export default function App() {
         alert('Error creando ticket en el backend');
       }
     } catch {
-      // Mock local
       const mockTicket = {
         id: String(Date.now()),
         ticketNumber: `TCK-${1000 + tickets.length + 1}`,
@@ -117,7 +110,6 @@ export default function App() {
     }
   };
 
-  // Generar QR
   const handleGenerateQr = async () => {
     try {
       const res = await fetch(`${API_BASE}/documents/qr/generate`, {
@@ -142,7 +134,6 @@ export default function App() {
     }
   };
 
-  // Validar QR
   const handleVerifyQr = async () => {
     try {
       const res = await fetch(`${API_BASE}/documents/qr/verify`, {
@@ -157,7 +148,6 @@ export default function App() {
     }
   };
 
-  // Simular Viaje Finalizado
   const handleSimulateTrip = async () => {
     const tripId = `trip-${Math.floor(1000 + Math.random() * 9000)}`;
     try {
@@ -191,7 +181,6 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {/* Sidebar de Navegación */}
       <aside className="sidebar">
         <div className="brand-header">
           <div className="brand-logo">M8</div>
@@ -267,7 +256,6 @@ export default function App() {
         </div>
       </aside>
 
-      {/* Contenido Principal */}
       <main className="main-content">
         <header className="top-bar">
           <h2 className="page-title">
@@ -283,7 +271,6 @@ export default function App() {
         </header>
 
         <div className="content-body">
-          {/* TAB 1: OVERVIEW */}
           {activeTab === 'overview' && (
             <>
               <div className="stats-grid">
@@ -322,7 +309,6 @@ export default function App() {
             </>
           )}
 
-          {/* TAB 2: TICKETS */}
           {activeTab === 'tickets' && (
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '24px' }}>
               <div className="glass-card">
@@ -361,7 +347,6 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Form Crear Ticket */}
               <div className="glass-card">
                 <h3 style={{ marginBottom: '16px', fontSize: '18px' }}>Nuevo Ticket</h3>
                 <form onSubmit={handleCreateTicket} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -419,7 +404,6 @@ export default function App() {
             </div>
           )}
 
-          {/* TAB 3: NOTIFICACIONES */}
           {activeTab === 'notifications' && (
             <div className="glass-card">
               <h3 style={{ marginBottom: '16px', fontSize: '18px' }}>Registro de Envíos y Trazabilidad (RF-8.6)</h3>
@@ -456,7 +440,6 @@ export default function App() {
             </div>
           )}
 
-          {/* TAB 4: QR */}
           {activeTab === 'qr' && (
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
               <div className="glass-card">
@@ -522,7 +505,6 @@ export default function App() {
             </div>
           )}
 
-          {/* TAB 5: SIMULADOR */}
           {activeTab === 'simulator' && (
             <div className="glass-card">
               <h3 style={{ marginBottom: '12px', fontSize: '18px' }}>Emulación de Eventos Asíncronos (M5, M6, M7, M9)</h3>

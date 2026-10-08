@@ -40,15 +40,14 @@ export class NotificationsService {
                   <small style="color: #888;">Plataforma de Movilidad Urbana - Módulo 8 (G10)</small>
                 </div>`,
         });
-        this.logger.log(` Email enviado correctamente a ${dto.recipient}`);
+        this.logger.log(`Email enviado a ${dto.recipient}`);
       } catch (err) {
-        this.logger.warn(`⚠ Error enviando email: ${err.message}`);
+        this.logger.warn(`Error enviando email: ${err.message}`);
         status = 'FAILED';
         errorMessage = err.message;
       }
     }
 
-    // Persistir registro en base de datos si Prisma está disponible (RF-8.6)
     try {
       const log = await this.prisma.notificationLog.create({
         data: {

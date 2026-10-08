@@ -1,16 +1,16 @@
 # Desarrollo de Software - 2026
 
-## 🚗 Grupo 10: Módulo 8 (Notificaciones, Documentos y Soporte)
+## Grupo 10: Módulo 8 (Notificaciones, Documentos y Soporte)
 
 > **Plataforma Distribuida de Movilidad Urbana**  
-> Repositorio oficial del **Grupo 10 (9 integrantes)** encargado de la implementación de **M8** utilizando NestJS, Arquitectura Hexagonal, TypeScript y **Supabase Cloud**.
+> Repositorio del Grupo 10 (9 integrantes) para la implementación de **M8** utilizando NestJS, Arquitectura Hexagonal, TypeScript y PostgreSQL.
 
-### 📚 Documentación Rápida para el Equipo y Docentes
-- 🚀 **[Guía de Puesta en Marcha y Flujo de Git](file:///home/heberum/Projects/G10-M8/G10-M8/CONTRIBUTING.md)**: Cómo clonar, conectar a Supabase y trabajar con PRs.
-- 🏛️ **[Arquitectura de Software (Hexagonal)](file:///home/heberum/Projects/G10-M8/G10-M8/ARCHITECTURE.md)**: Justificación técnica, desacoplamiento y modelo en capas.
-- 👥 **[Organización de Roles y Células](file:///home/heberum/Projects/G10-M8/G10-M8/ROLES.md)**: Distribución del trabajo para los 9 integrantes (1 Tech Lead + 4 Células de 2 personas).
-- 📌 **[Guía de Gestión en Teams y Trello](file:///home/heberum/Projects/G10-M8/G10-M8/TEAM_COLLABORATION_GUIDE.md)**: Canales de comunicación, tableros Kanban y dinámicas ágiles.
-- 📋 **[Especificación OpenAPI 3.0](file:///home/heberum/Projects/G10-M8/G10-M8/packages/contracts/openapi.yaml)**: Contrato oficial de interfaces de M8.
+### Documentación del Proyecto
+- [Guía de Puesta en Marcha y Flujo de Git](CONTRIBUTING.md): Cómo clonar, configurar variables de entorno y trabajar con ramas.
+- [Arquitectura de Software (Hexagonal)](ARCHITECTURE.md): Justificación técnica, desacoplamiento y modelo en capas.
+- [Organización de Roles y Células](ROLES.md): Distribución de responsabilidades para los 9 integrantes (1 Tech Lead + 4 células de 2 personas).
+- [Guía de Gestión en Teams y Trello](TEAM_COLLABORATION_GUIDE.md): Canales de comunicación y tablero Kanban del equipo.
+- [Especificación OpenAPI 3.0](packages/contracts/openapi.yaml): Contrato formal de interfaces de M8.
 
 ---
 
@@ -20,7 +20,7 @@ En este repositorio se deberán definir todas las interfaces entre los diferente
 
 ## Actividad 1:	Escenario por desarrollar
 
-El producto de referencia será una **plataforma distribuida de movilidad urbana bajo demanda**. La plataforma permitirá gestionar clientes, conductores y vehículos, ubicación y disponibilidad, solicitudes de viaje, despacho, ciclo de vida del viaje, tariwadawdfas y pagos, comunicaciones y documentación, además de reservas de viajes para una fecha y hora futura.
+El producto de referencia será una **plataforma distribuida de movilidad urbana bajo demanda**. La plataforma permitirá gestionar clientes, conductores y vehículos, ubicación y disponibilidad, solicitudes de viaje, despacho, ciclo de vida del viaje, tarifas y pagos, comunicaciones y documentación, además de reservas de viajes para una fecha y hora futura.
 
 La plataforma conectará clientes que necesitan trasladarse con conductores habilitados que ofrecen servicios en auto o moto. Deberá admitir solicitudes inmediatas y reservas para una fecha futura, acompañar el ciclo completo del viaje y coordinar identidad, datos de perfiles, ubicación, despacho, pagos y comunicaciones mediante servicios independientes
 

@@ -50,12 +50,12 @@ Para coordinar el trabajo en equipo de forma ordenada y sin bloqueos, entre los 
 
 ---
 
-### Célula 5: Arquitectura, DevOps & QA Cross (2 Integrantes)
-- **Integrantes**: Dev 9 & Dev 10 (Tech Leads / Coordinadores)
+### Rol Transversal: Tech Lead, DevOps & QA Cross (1 Integrante)
+- **Integrante**: Heber (Tech Lead / Coordinador)
 - **Requerimientos**: **RNF-01 a RNF-07, RNF-17, RNF-20**
 - **Responsabilidades**:
   1. Mantenimiento del Monorepo con `npm workspaces` y sincronización del contrato `openapi.yaml`.
   2. Infraestructura Docker Compose (Postgres, Redis, RabbitMQ, Mailpit) y conexión con Supabase.
   3. Pipeline de Integración Continua (CI) en GitHub Actions (`.github/workflows/ci.yml`).
   4. Módulo simulador de eventos de la plataforma para desbloquear al equipo de pruebas locales.
-  5. Asistencia en Code Reviews de integración hacia `develop` y `main`.
+  5. Asistencia y aprobación en Code Reviews de integración hacia `develop` y `main`.
