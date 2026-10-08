@@ -6,7 +6,7 @@ En este repositorio se deberán definir todas las interfaces entre los diferente
 
 ## Actividad 1:	Escenario por desarrollar
 
-El producto de referencia será una **plataforma distribuida de movilidad urbana bajo demanda**. La plataforma permitirá gestionar clientes, conductores y vehículos, ubicación y disponibilidad, solicitudes de viaje, despacho, ciclo de vida del viaje, tarifas y pagos, comunicaciones y documentación, además de reservas de viajes para una fecha y hora futura.
+El producto de referencia será una **plataforma distribuida de movilidad urbana bajo demanda**. La plataforma permitirá gestionar clientes, conductores y vehículos, ubicación y disponibilidad, solicitudes de viaje, despacho, ciclo de vida del viaje, tariwadawdfas y pagos, comunicaciones y documentación, además de reservas de viajes para una fecha y hora futura.
 
 La plataforma conectará clientes que necesitan trasladarse con conductores habilitados que ofrecen servicios en auto o moto. Deberá admitir solicitudes inmediatas y reservas para una fecha futura, acompañar el ciclo completo del viaje y coordinar identidad, datos de perfiles, ubicación, despacho, pagos y comunicaciones mediante servicios independientes
 
