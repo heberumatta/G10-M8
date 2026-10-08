@@ -43,3 +43,7 @@ Thumbs.db
 .vscode/
 *.sublime-project
 *.sublime-workspace
+
+# Local AI tooling
+.agents/
+skills-lock.json
